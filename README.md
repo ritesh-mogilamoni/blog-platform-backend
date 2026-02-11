@@ -6,10 +6,10 @@
 2.Add .gitignore file
 
 3.Create .env file for environment variables& read data from .env with "dotenv" module 
-     npm i dotenv
+    (npm i dotenv)
 
 4.Generate package.json
-    npm init -y
+    (npm init -y)
 
 5.Create express app
 
