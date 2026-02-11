@@ -121,7 +121,6 @@ POST http://localhost:4000/admin-api/block-user
 Content-Type: application/json
 
 {
-    "adminid":
     "userid":"69896c9f8a0c5ead7846deb0"
 }
 
