@@ -1,9 +1,11 @@
 import exp from 'express'
 import {connect} from 'mongoose'
 import {config} from 'dotenv'
-import { userApp } from './APIs/user-api.js'
-import { adminApp } from './APIs/admin-api.js'
-import { authorApp } from './APIs/author-api.js'
+import { userRoute } from './APIs/user-api.js'
+import { adminRoute } from './APIs/admin-api.js'
+import { authorRoute } from './APIs/author-api.js'
+import { commonRoute } from './APIs/common-api.js'
+import cookieParser from 'cookie-parser'
 config()    //process.env
 
 const app=exp()
@@ -12,10 +14,14 @@ const app=exp()
 
 //add body parser middleware
 app.use(exp.json())
+app.use(cookieParser())
+app.use('/user-api',userRoute)
+app.use('/admin-api',adminRoute)
+app.use('/author-api',authorRoute)
+app.use('/common-api',commonRoute)
 
-app.use('/user-api',userApp)
-app.use('/admin-api',adminApp)
-app.use('/author-api',authorApp)
+
+
 
 const connectDB=async()=>{
     try{
@@ -29,6 +35,11 @@ const connectDB=async()=>{
 }
 
 connectDB()
+
+//dealing with invalid path
+app.use((req,res,next)=>{
+    res.json({message:`${req.url} is Invalid path`})
+})
 
 //error handling middleware
 app.use((err,req,res,next)=>{

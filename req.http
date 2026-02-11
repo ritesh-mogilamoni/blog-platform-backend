@@ -1,0 +1,144 @@
+//creation
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "firstName":"Vikas",
+    "lastName":"Apte",
+    "email":"vikas@mail.com",
+    "password":"vikas123",
+    "profileImageUrl":""
+}
+
+###
+POST http://localhost:4000/author-api/users
+Content-Type: application/json
+
+{
+    "firstName":"Sai",
+    "lastName":"Author",
+    "email":"saiauth@mail.com",
+    "password":"auth123",
+    "profileImageUrl":""
+}
+
+//login
+###
+POST http://localhost:4000/common-api/authenticate
+Content-Type: application/json
+
+{
+    "email":"vikas@mail.com",
+    "password":"vikas123"
+}
+
+
+
+###
+POST http://localhost:4000/common-api/authenticate
+Content-Type: application/json
+
+{
+    "email":"saiauth@mail.com",
+    "password":"auth123"
+}
+
+//article creation(author)
+###
+POST http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"69896ca38a0c5ead7846deb2",
+    "title":"Graphs",
+    "category":"Programming",
+    "content":"Graphs-(vertices and edges) "
+}
+
+//read articles by author id
+###
+GET http://localhost:4000/author-api/articles/69896ca38a0c5ead7846deb2
+
+
+
+###article updation(author)
+PUT http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"69896ca38a0c5ead7846deb2",
+    "articleId":"698978caa034b4ad459f4015",
+    "title":"C",
+    "category":" updated",
+    "content":"text updated"
+}
+
+###article updation
+PUT http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"69896c9f8a0c5ead7846deb0",
+    "articleId":"698978caa034b4ad459f4015",
+    "title":"C",
+    "category":" updated",
+    "content":"text updated"
+}
+
+###soft delete article
+DELETE http://localhost:4000/author-api/articles/69896ca38a0c5ead7846deb2/698978caa034b4ad459f4015
+
+###Logout
+GET http://localhost:4000/common-api/logout
+
+### read articles by user
+GET http://localhost:4000/user-api/articles
+
+###Add comment to an article(protected route)
+POST http://localhost:4000/user-api/articles/comments
+Content-Type: application/json
+
+{
+    "articleId":"6989e43327b2b5ae8ae7680f",
+    "user":"69896ca38a0c5ead7846deb2",
+    "comment":"Article is good based on programming"
+}
+
+###
+GET http://localhost:4000/test
+
+###
+POST http://localhost:4000/common-api/authenticate
+Content-Type: application/json
+
+{
+    "email":"vikas@mail.com",
+    "password":"vikas123"
+}
+
+###Block user
+POST http://localhost:4000/admin-api/block-user
+Content-Type: application/json
+
+{
+    "adminid":
+    "userid":"69896c9f8a0c5ead7846deb0"
+}
+
+###Unblock User
+POST http://localhost:4000/admin-api/unblock-user
+Content-Type: application/json
+
+{
+    "userid":"69896c9f8a0c5ead7846deb0"
+}
+
+###Change Password
+PUT http://localhost:4000/common-api/change-pass
+Content-Type: application/json
+
+{
+    "currPass":"vikas@12345",
+    "newPass":"vikas123",
+    "email":"vikas@mail.com"
+}
