@@ -20,15 +20,15 @@ const articleSchema= new Schema({
     },
     title:{
         type:String,
-        required:[true,"Author ID is required"]
+        required:[true,"title is required"]
     },
     category:{
         type:String,
-        required:[true,"Author ID is required"]
+        required:[true,"category is required"]
     },
     content:{
         type:String,
-        required:[true,"Author ID is required"]
+        required:[true,"content is required"]
     },
     comments:[userCommentSchema],
     isArticleActive:{
